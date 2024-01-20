@@ -1,4 +1,6 @@
 <template>
+  <div>Header</div>
+  <router-view name="secondaryHeader"></router-view>
   <the-navigation></the-navigation>
   <router-view></router-view>
 </template>

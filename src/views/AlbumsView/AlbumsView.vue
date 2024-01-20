@@ -1,7 +1,7 @@
 <template>
     <div style="display:flex">
         <div style="flex-grow:1" class="album-list">
-            <router-link class="album-item" v-for="album in albums" :key="album.id" :to="'/albums/' + album.id">
+            <router-link class="album-item" v-for="album in albums" :key="album.id" :to="albumDetailLink(album.id)">
                 {{ album.title }}
             </router-link>
         </div>
@@ -17,7 +17,22 @@ export default {
     inject: ['albums'],
     mounted() {
         console.log("albums", this.albums);
-    }
+    },
+    methods: {
+        albumDetailLink(albumId) {
+            return {
+                name: 'album-detail',
+                params: {
+                    albumId
+                },
+                query: {
+                    sort: 'asc'
+                }
+            }
+        }
+    },
+
+
 }
 </script>
 

@@ -21,6 +21,6 @@ export default {
             const userId = this.album.userId
             return this.users.find(item => item.id == userId)
         }
-    }
+    },
 }
 </script>

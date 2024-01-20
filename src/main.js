@@ -15,6 +15,12 @@ import AlbumItem from "./views/AlbumsView/AlbumItem/AlbumItem.vue";
 import PostItem from "./views/PostsView/PostItem/PostItem.vue";
 import CommentItem from "./views/CommentsView/CommentItem/CommentItem.vue";
 import TodoItem from "./views/TodosView/TodoItem/TodoItem.vue";
+import AbumsSecondaryHeader from "./components/secondary-headers/AbumsSecondaryHeader.vue";
+import CommentsSecondaryHeader from "./components/secondary-headers/CommentsSecondaryHeader.vue";
+import PhotosSecondaryHeader from "./components/secondary-headers/PhotosSecondaryHeader.vue";
+import PostsSecondaryHeader from "./components/secondary-headers/PostsSecondaryHeader.vue";
+import TodosSecondaryHeader from "./components/secondary-headers/TodosSecondaryHeader.vue";
+import UsersSecondaryHeader from "./components/secondary-headers/UsersSecondaryHeader.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,10 +30,15 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      name: "albums",
       path: "/albums",
-      component: AlbumsView,
+      components: {
+        default: AlbumsView,
+        secondaryHeader: AbumsSecondaryHeader,
+      },
       children: [
         {
+          name: "album-detail",
           path: ":albumId",
           component: AlbumItem,
         },
@@ -35,7 +46,11 @@ const router = createRouter({
     },
     {
       path: "/comments",
-      component: CommentsView,
+      components: {
+        default: CommentsView,
+        secondaryHeader: CommentsSecondaryHeader,
+      },
+
       children: [
         {
           path: "/comments/:commentId",
@@ -45,7 +60,10 @@ const router = createRouter({
     },
     {
       path: "/photos",
-      component: PhotosView,
+      components: {
+        default: PhotosView,
+        secondaryHeader: PhotosSecondaryHeader,
+      },
       children: [
         {
           path: ":photoId",
@@ -55,7 +73,7 @@ const router = createRouter({
     },
     {
       path: "/posts",
-      component: PostsView,
+      components: { default: PostsView, secondaryHeader: PostsSecondaryHeader },
       children: [
         {
           path: ":postId",
@@ -65,7 +83,7 @@ const router = createRouter({
     },
     {
       path: "/todos",
-      component: TodosView,
+      components: { default: TodosView, secondaryHeader: TodosSecondaryHeader },
       children: [
         {
           path: ":todoId",
@@ -75,7 +93,7 @@ const router = createRouter({
     },
     {
       path: "/users",
-      component: UsersView,
+      components: { default: UsersView, secondaryHeader: UsersSecondaryHeader },
       children: [
         {
           path: ":userId",
@@ -88,6 +106,13 @@ const router = createRouter({
       redirect: "/",
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition;
+    return {
+      left: 0,
+      top: 0,
+    };
+  },
 });
 
 const app = createApp(App);
