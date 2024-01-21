@@ -15,9 +15,6 @@
 
 export default {
     inject: ['comments'],
-    mounted() {
-        console.log("comments", this.comments);
-    }
 }
 </script>
 

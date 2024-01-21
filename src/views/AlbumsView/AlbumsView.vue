@@ -15,9 +15,6 @@
 
 export default {
     inject: ['albums'],
-    mounted() {
-        console.log("albums", this.albums);
-    },
     methods: {
         albumDetailLink(albumId) {
             return {

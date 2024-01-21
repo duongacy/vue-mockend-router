@@ -14,9 +14,6 @@
 
 export default {
     inject: ['todos'],
-    mounted() {
-        console.log("todos", this.todos);
-    }
 }
 </script>
 

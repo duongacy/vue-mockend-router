@@ -18,9 +18,37 @@ import UserItem from './UserItem/UserItem.vue';
 export default {
     components: { UserItem },
     inject: ['users'],
+    beforeRouteEnter(to, from, next) {
+        console.log('beforeRouteEnter');
+        // const confirmed = confirm(`Do you want to enter ${to.name}?`)
+        // next(confirmed);
+        next()
+    },
+    beforeCreate() {
+        console.log('beforeCreate');
+    },
+    beforeMount() {
+        console.log('beforeMount');
+    },
     mounted() {
-        console.log("users", this.users);
-    }
+        console.log('mounted');
+    },
+    beforeUpdate() {
+        console.log('beforeUpdate');
+    },
+    beforeRouteLeave(to, from, next) {
+        console.log('beforeRouteLeave');
+        // const confirmed = confirm(`Do you want to leave ${from.name}?`)
+        // next(confirmed)
+        next()
+    },
+    beforeRouteUpdate(to, from, next) {
+        console.log('beforeRouteUpdate');
+        next()
+    },
+    beforeUnmount() {
+        console.log('beforeUnmount');
+    },
 }
 </script>
 

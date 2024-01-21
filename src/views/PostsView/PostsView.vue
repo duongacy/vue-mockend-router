@@ -16,9 +16,6 @@
 
 export default {
     inject: ['posts'],
-    mounted() {
-        console.log("posts", this.posts);
-    }
 }
 </script>
 
