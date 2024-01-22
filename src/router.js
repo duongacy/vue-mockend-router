@@ -138,9 +138,8 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-router.afterEach((to, from, next) => {
+router.afterEach((to, from, failure) => {
   console.log("after router:", { to, from });
-  next();
 });
 
 export default router;
